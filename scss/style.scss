@@ -1,0 +1,86 @@
+*{
+  box-sizing: border-box;
+}
+$bgColor: #333;
+$btnColor: #12db12;
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: $bgColor;
+}
+.button{
+  position: relative;
+  padding: 15px 30px;
+  color: $btnColor;
+  text-transform: uppercase;
+  font-size: 24px;
+  letter-spacing: 4px;
+  overflow: hidden;
+  transition:all 1s;
+  transition-delay: 1s;
+
+  &__line{
+    position: absolute;
+    display: block;
+    transition:all 1s;
+  }
+  &__line--top{
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, $btnColor);
+  }
+  &__line--right{
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, $btnColor);
+  }
+  &__line--bottom{
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to left, transparent, $btnColor);
+  }
+  &__line--left{
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to top, transparent, $btnColor);
+  }
+}
+.button:hover{
+  box-shadow: 0 0 10px $btnColor,
+              0 0 20px $btnColor,
+              0 0 40px $btnColor,
+              0 0 80px $btnColor;
+  color:$bgColor;
+  background: $btnColor;
+}
+.button:hover .button{
+  &__line--top{
+    top: 0;
+    left: 100%;
+  }
+  &__line--right{
+    top: 100%;
+    right: 0;
+    transition-delay: 0.25s;
+  }
+  &__line--bottom{
+    bottom: 0;
+    right: 100%;
+  }
+  &__line--left{
+    bottom: 100%;
+    left: 0;
+    transition-delay: 0.25s;
+  }
+}
